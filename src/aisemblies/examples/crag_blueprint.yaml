@@ -1,0 +1,47 @@
+entry_station: retrieve
+global_error_station: null
+stations:
+  retrieve:
+    function: aisemblies.examples.crag.retrieve
+    transitions:
+      OK: grade_documents
+      NO_QUESTION: null
+    finish_on: []
+    on_error: error_handler
+    name: retrieve
+  grade_documents:
+    function: aisemblies.examples.crag.grade_documents
+    transitions:
+      RELEVANT: generate
+      IRRELEVANT: transform_query
+    finish_on: []
+    on_error: error_handler
+    name: grade_documents
+  transform_query:
+    function: aisemblies.examples.crag.transform_query
+    transitions:
+      TRANSFORMED: web_search
+    finish_on: []
+    on_error: error_handler
+    name: transform_query
+  web_search:
+    function: aisemblies.examples.crag.web_search
+    transitions:
+      DONE: generate
+    finish_on: []
+    on_error: error_handler
+    name: web_search
+  generate:
+    function: aisemblies.examples.crag.generate
+    transitions: {}
+    finish_on:
+    - DONE
+    on_error: error_handler
+    name: generate
+  error_handler:
+    function: aisemblies.examples.crag.error_handler
+    transitions: {}
+    finish_on:
+    - null
+    on_error: null
+    name: error_handler

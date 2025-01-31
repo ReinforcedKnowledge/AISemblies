@@ -1,0 +1,32 @@
+[project]
+name = "aisemblies"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "ReinforcedKnowledge", email = "reinforced.knowledge@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[project.optional-dependencies]
+openapi = [
+    "docstring-parser>=0.16",
+    "openai>=1.60.2",
+    "pydantic>=2.10.6",
+]
+examples = [
+    "beautifulsoup4>=4.12.3",
+    "fastapi>=0.115.8",
+    "httpx>=0.28.1",
+    "langchain-chroma>=0.2.1",
+    "langchain-community>=0.3.16",
+    "langchain-core>=0.3.33",
+    "langchain-openai>=0.3.3",
+    "langchain-text-splitters>=0.3.5",
+    "uvicorn>=0.34.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
